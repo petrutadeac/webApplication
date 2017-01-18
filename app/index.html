@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="employeeDetails">
+<head>
+    <title>SportsStore</title>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+    <script>
+        angular.module("employeeDetails", ["ngRoute","ngResource"])
+                .config(function ($routeProvider) {
+                    $routeProvider.when("/employees", {
+                        templateUrl: "/view/employee.html"
+                    });
+                    $routeProvider.when("/employees/:employeeId", {
+                        templateUrl: "/view/bill.html",
+                    });
+                    $routeProvider.otherwise({
+                        templateUrl: "/view/main.html"
+                    });
+
+                })
+    </script>
+    <script src="controllers/employeeController.js"></script>
+    <script src="controllers/billController.js"></script>
+    <script src="ngmodules/angular-route.js"></script>
+    <script src="ngmodules/angular-resource.js"></script>
+</head>
+<body ng-controller="employeeCtrl">
+<div class="navbar navbar-inverse">
+    <a class="navbar-brand" href="#">Employee Details</a>
+</div>
+<ng-view/>
+</body>
+</html>
